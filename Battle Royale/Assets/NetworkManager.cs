@@ -1,0 +1,45 @@
+using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+
+public class NetworkManager : MonoBehaviourPunCallbacks
+{
+    public int maxPlayers = 10;
+    //instance
+    public static NetworkManager instance;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    void Start()
+    {
+        // connect to the master server
+        PhotonNetwork.ConnectUsingSettings();
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("We've connected to the master server!");
+    }
+
+    // attempts to create a room
+    public void CreateRoom(string roomName)
+    {
+        RoomOptions options = new RoomOptions();
+        options.MaxPlayers = (byte)maxPlayers;
+        PhotonNetwork.CreateRoom(roomName, options);
+    }
+
+    public void JoinRoom(string roomName)
+    {
+        PhotonNetwork.JoinRoom(roomName);
+    }
+
+    public void ChangeScene(string sceneName)
+    {
+        PhotonNetwork.LoadLevel(sceneName);
+    }
+}
