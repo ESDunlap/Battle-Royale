@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour
     {
         rotX += Input.GetAxis("Mouse X") * sensX;
         rotY += Input.GetAxis("Mouse Y") * sensY;
-        rotY = Mathf.Clamp(rotY, sensY, maxY);
+        rotY = Mathf.Clamp(rotY, minY, maxY);
         if (isSpectator)
         {
             // rotate the cam vertically

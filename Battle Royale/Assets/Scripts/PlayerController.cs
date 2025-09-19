@@ -1,16 +1,25 @@
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 
 public class PlayerController : MonoBehaviourPun
 {
-    [Header("Stats")]
+    private int curAttackerId;
+    private bool flashingDamage;
+    public MeshRenderer mr;
+    [Header("Move Stats")]
     public float moveSpeed;
     public float jumpForce;
     [Header("Components")]
     public Rigidbody rig;
     public int id;
     public Player photonPlayer;
+    [Header("Player Stats")]
+    public int curHp;
+    public int maxHp;
+    public int kills;
+    public bool dead;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +30,8 @@ public class PlayerController : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine || dead)
+            return;
         Move();
         if (Input.GetKeyDown(KeyCode.Space))
             TryJump();
@@ -61,4 +72,41 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
+    [PunRPC]
+    public void TakeDamage(int attackerId, int damage)
+    {         
+    if(dead)
+        return; 
+    curHp -= damage;
+    curAttackerId = attackerId;
+    // flash the player red
+    photonView.RPC("DamageFlash", RpcTarget.Others);
+    // update the health bar UI
+    // die if no health left
+    if(curHp <= 0)
+        photonView.RPC("Die", RpcTarget.All);
+    }
+
+
+    [PunRPC]
+    void DamageFlash()
+    {
+        if (flashingDamage)
+            return;
+        StartCoroutine(DamageFlashCoRoutine());
+        IEnumerator DamageFlashCoRoutine()
+        {
+            flashingDamage = true;
+            Color defaultColor = mr.material.color;
+            mr.material.color = Color.red;
+            yield return new WaitForSeconds(0.05f);
+            mr.material.color = defaultColor;
+            flashingDamage = false;
+        }
+    }
+
+    [PunRPC]
+    void Die()
+    {
+    }
 }
