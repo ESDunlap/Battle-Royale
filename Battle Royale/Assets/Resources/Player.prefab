@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 2934139879076482311}
   - component: {fileID: 8957254120509184416}
   - component: {fileID: -8369166387154976452}
+  - component: {fileID: 8562252649893985193}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -261,10 +262,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d309b8c0b0af91469d52ac406384266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mr: {fileID: 0}
   moveSpeed: 5
   jumpForce: 5
   rig: {fileID: 2934139879076482311}
   id: 0
+  weapon: {fileID: 8562252649893985193}
+  curHp: 0
+  maxHp: 0
+  kills: 0
+  dead: 0
 --- !u!114 &-8369166387154976452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +294,25 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8562252649893985193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286488082876787368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a685c9ee8c97f8648a65d56a6fce11d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  curAmmo: 10
+  maxAmmo: 10
+  bulletSpeed: 10
+  shootRate: 0
+  bulletPrefab: {fileID: 5153120219975384548, guid: 760970a1fb3c53d48bd046c00c775b12, type: 3}
+  bulletSpawnPos: {fileID: 7151747353975221692}
 --- !u!1 &3241776850562835931
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +500,7 @@ Transform:
   m_Children:
   - {fileID: 4425669588639767942}
   - {fileID: 3016477508433801731}
+  - {fileID: 7151747353975221692}
   m_Father: {fileID: 3049307104951788551}
   m_LocalEulerAnglesHint: {x: 0, y: -5.477, z: 0}
 --- !u!1 &4814705377468358308
@@ -584,3 +611,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &4825219839782553404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7151747353975221692}
+  m_Layer: 0
+  m_Name: BulletSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7151747353975221692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4825219839782553404}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.047780406, z: -0, w: 0.99885786}
+  m_LocalPosition: {x: 0.16, y: 0, z: 1.68}
+  m_LocalScale: {x: 1.581339, y: 1.581339, z: 1.581339}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 713752514562237549}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

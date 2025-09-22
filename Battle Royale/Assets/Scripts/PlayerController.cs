@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviourPun
     public Rigidbody rig;
     public int id;
     public Player photonPlayer;
+    public PlayerWeapon weapon;
     [Header("Player Stats")]
     public int curHp;
     public int maxHp;
@@ -35,6 +36,8 @@ public class PlayerController : MonoBehaviourPun
         Move();
         if (Input.GetKeyDown(KeyCode.Space))
             TryJump();
+        if (Input.GetMouseButtonDown(0))
+            weapon.TryShoot();
     }
 
     void Move()
