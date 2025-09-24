@@ -62,10 +62,13 @@ public class GameManager : MonoBehaviourPun
     {
         // set the UI win text
         Invoke("GoBackToMenu", postGameTime);
+        GameUI.instance.SetWinText(GetPlayer(winningPlayer).photonPlayer.NickName);
     }
     void GoBackToMenu()
     {
         NetworkManager.instance.ChangeScene("Menu");
     }
+
+
 
 }

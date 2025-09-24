@@ -31,7 +31,7 @@ public class PlayerWeapon : MonoBehaviour
         lastShootTime = Time.time;
         // update the ammo UI
         // spawn the bullet
-        player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPos.transform.position, Camera.main.transform.forward);
+        player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPos.transform.position, bulletSpawnPos.transform.forward);
     }
 
     [PunRPC]
@@ -49,15 +49,10 @@ public class PlayerWeapon : MonoBehaviour
 
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [PunRPC]
+    public void GiveAmmo(int ammoToGive)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        curAmmo = Mathf.Clamp(curAmmo + ammoToGive, 0, maxAmmo);
+        // update the ammo text
     }
 }
