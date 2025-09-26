@@ -82,8 +82,8 @@ public class PlayerController : MonoBehaviourPun
 
     [PunRPC]
     public void TakeDamage(int attackerId, int damage)
-    {         
-    if(dead)
+    {
+    if (dead)
         return; 
     curHp -= damage;
     curAttackerId = attackerId;
@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviourPun
     // die if no health left
     if(curHp <= 0)
         photonView.RPC("Die", RpcTarget.All);
+    GameUI.instance.UpdateHealthBar();
     }
 
 
@@ -135,16 +136,18 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
-    [PunRPC]
     public void AddKill()
     {
         kills++;
+        GameUI.instance.UpdatePlayerInfoText();
     }
 
     [PunRPC]
     public void Heal(int amountToHeal)
     {
+
         curHp = Mathf.Clamp(curHp + amountToHeal, 0, maxHp);
+        GameUI.instance.UpdateHealthBar();
         // update the health bar UI
     }
 

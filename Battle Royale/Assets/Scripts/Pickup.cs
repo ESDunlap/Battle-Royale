@@ -11,6 +11,8 @@ public class Pickup : MonoBehaviourPun
 {
     public PickupType type;
     public int value;
+
+    [PunRPC]
     void OnTriggerEnter(Collider other)
     {
         if (!PhotonNetwork.IsMasterClient)

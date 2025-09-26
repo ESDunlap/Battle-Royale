@@ -2,7 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PlayerWeapon : MonoBehaviour
+public class PlayerWeapon : MonoBehaviourPun
 {
     [Header("Stats")]
     public int damage;
@@ -32,6 +32,7 @@ public class PlayerWeapon : MonoBehaviour
         // update the ammo UI
         // spawn the bullet
         player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPos.transform.position, bulletSpawnPos.transform.forward);
+        GameUI.instance.UpdateAmmoText();
     }
 
     [PunRPC]
@@ -53,6 +54,7 @@ public class PlayerWeapon : MonoBehaviour
     public void GiveAmmo(int ammoToGive)
     {
         curAmmo = Mathf.Clamp(curAmmo + ammoToGive, 0, maxAmmo);
+        GameUI.instance.UpdateAmmoText();
         // update the ammo text
     }
 }

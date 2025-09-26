@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
 
-public class GameUI : MonoBehaviour
+public class GameUI : MonoBehaviourPun
 {
     public Slider healthBar;
     public TextMeshProUGUI playerInfoText;
@@ -27,6 +27,7 @@ public class GameUI : MonoBehaviour
         UpdatePlayerInfoText();
         UpdateAmmoText();
     }
+
     public void UpdateHealthBar()
     {
         healthBar.value = player.curHp;
@@ -34,7 +35,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdatePlayerInfoText()
     {
-        playerInfoText.text = "<b>Alive:</b> " + GameManager.instance.alivePlayers + "\n<b > Kills:</ b > " + player.kills;
+        playerInfoText.text = "<b>Alive:</b> " + GameManager.instance.alivePlayers + "\n</b> Kills:</b> " + player.kills;
     }
 
     public void UpdateAmmoText()
@@ -46,11 +47,5 @@ public class GameUI : MonoBehaviour
     {
         winBackground.gameObject.SetActive(true);
         winText.text = winnerName + " wins";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

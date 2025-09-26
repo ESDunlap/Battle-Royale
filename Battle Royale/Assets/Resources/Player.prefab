@@ -262,14 +262,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d309b8c0b0af91469d52ac406384266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mr: {fileID: 0}
+  mr: {fileID: 1927417519061533816}
   moveSpeed: 5
   jumpForce: 5
   rig: {fileID: 2934139879076482311}
   id: 0
   weapon: {fileID: 8562252649893985193}
-  curHp: 0
-  maxHp: 0
+  curHp: 100
+  maxHp: 100
   kills: 0
   dead: 0
 --- !u!114 &-8369166387154976452
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a685c9ee8c97f8648a65d56a6fce11d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
   curAmmo: 10
   maxAmmo: 10
   bulletSpeed: 30
