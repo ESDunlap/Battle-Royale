@@ -4,7 +4,10 @@ using Photon.Pun;
 public enum PickupType
 {
     Health,
-    Ammo
+    Ammo,
+    Sniper,
+    Shotgun,
+    Shield
 }
 
 public class Pickup : MonoBehaviourPun
@@ -25,6 +28,12 @@ public class Pickup : MonoBehaviourPun
                 player.photonView.RPC("Heal", player.photonPlayer, value);
             else if (type == PickupType.Ammo)
                 player.photonView.RPC("GiveAmmo", player.photonPlayer, value);
+            else if (type == PickupType.Sniper)
+                player.photonView.RPC("GiveSniper", player.photonPlayer);
+            else if (type == PickupType.Shotgun)
+                player.photonView.RPC("GiveShotgun", player.photonPlayer);
+            else if (type == PickupType.Shield)
+                player.photonView.RPC("GiveShield", player.photonPlayer);
             // destroy the object
             //PhotonNetwork.Destroy(gameObject);
             // BUG: pickups don't get removed from game and throw error:
