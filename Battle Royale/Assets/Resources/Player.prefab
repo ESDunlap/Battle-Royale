@@ -453,22 +453,16 @@ MonoBehaviour:
   basicGun: {fileID: 3563034490659098646}
   sniperGun: {fileID: 2049802884285785436}
   shotGun: {fileID: 3734587917577164613}
-  damage: 0
   curAmmo: 0
   maxAmmo: 0
-  bulletSpeed: 0
-  shootRate: 0
   basicDamage: 10
-  basicCurAmmo: 10
   basicMaxAmmo: 10
   basicBulletSpeed: 30
   basicShootRate: 0
   shotgunDamage: 0
-  shotgunCurAmmo: 0
   shotgunMaxAmmo: 0
   shotgunShootRate: 0
   sniperDamage: 0
-  sniperCurAmmo: 0
   sniperMaxAmmo: 0
   sniperShootRate: 0
   sniperBulletSpawnPos: {fileID: 8516890953048646617}
