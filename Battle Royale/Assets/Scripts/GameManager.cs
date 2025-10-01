@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviourPun
         }
         return null;
     }
+
+
     public PlayerController GetPlayer(GameObject playerObject)
     {
         foreach (PlayerController player in players)

@@ -26,11 +26,14 @@ public class PlayerWeapon : MonoBehaviourPun
     [Header("Shotgun Stats")]
     public int shotgunDamage;
     public int shotgunMaxAmmo;
+    public float shotgunBulletSpeed;
     public float shotgunShootRate;
+    public int shotgunBulletSpread;
 
     [Header("Sniper Stats")]
     public int sniperDamage;
     public int sniperMaxAmmo;
+    public float sniperBulletSpeed;
     public float sniperShootRate;
     public Transform sniperBulletSpawnPos;
 
@@ -60,6 +63,19 @@ public class PlayerWeapon : MonoBehaviourPun
         // spawn the bullet
         if(sniperGun.activeSelf)
             player.photonView.RPC("SpawnBullet", RpcTarget.All, sniperBulletSpawnPos.transform.position, sniperBulletSpawnPos.transform.forward);
+        else if(shotGun.activeSelf)
+        {
+            for(float x = -1;x<2;x++)
+            {
+                for (float y = -1; y < 2; y++)
+                {
+                    player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPos.transform.position, bulletSpawnPos.transform.forward
+                                                                                                           + x/shotgunBulletSpeed*(bulletSpawnPos.transform.right)
+                                                                                                           + y/shotgunBulletSpeed*(bulletSpawnPos.transform.up));
+                }
+            }
+        }
+
         else
             player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPos.transform.position, bulletSpawnPos.transform.forward);
         GameUI.instance.UpdateAmmoText();
@@ -104,6 +120,26 @@ public class PlayerWeapon : MonoBehaviourPun
     [PunRPC]
     public void GiveShotgun()
     {
+        shotGun.SetActive(true);
+        basicGun.SetActive(false);
         sniperGun.SetActive(false);
+        damage = shotgunDamage;
+        curAmmo = shotgunMaxAmmo;
+        maxAmmo = shotgunMaxAmmo;
+        bulletSpeed = shotgunBulletSpeed;
+        shootRate = shotgunShootRate;
+    }
+
+    [PunRPC]
+    public void GiveSniper()
+    {
+        sniperGun.SetActive(true);
+        shotGun.SetActive(false);
+        basicGun.SetActive(false);
+        damage = sniperDamage;
+        curAmmo = sniperMaxAmmo;
+        maxAmmo = sniperMaxAmmo;
+        bulletSpeed = sniperBulletSpeed;
+        shootRate = sniperShootRate;
     }
 }

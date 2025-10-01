@@ -7,7 +7,8 @@ public enum PickupType
     Ammo,
     Sniper,
     Shotgun,
-    Shield
+    Shield,
+    Basic
 }
 
 public class Pickup : MonoBehaviourPun
@@ -28,6 +29,8 @@ public class Pickup : MonoBehaviourPun
                 player.photonView.RPC("Heal", player.photonPlayer, value);
             else if (type == PickupType.Ammo)
                 player.photonView.RPC("GiveAmmo", player.photonPlayer, value);
+            else if (type == PickupType.Basic)
+                player.photonView.RPC("GiveBasic", player.photonPlayer);
             else if (type == PickupType.Sniper)
                 player.photonView.RPC("GiveSniper", player.photonPlayer);
             else if (type == PickupType.Shotgun)

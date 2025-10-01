@@ -1,6 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -22,6 +23,11 @@ public class PlayerController : MonoBehaviourPun
     public int maxHp;
     public int kills;
     public bool dead;
+    [Header("Shield Stats")]
+    public GameObject shield;
+    public int maxShieldTime;
+    public int curShieldTime;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -83,17 +89,26 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     public void TakeDamage(int attackerId, int damage)
     {
-    if (dead)
-        return; 
-    curHp -= damage;
-    curAttackerId = attackerId;
-    // flash the player red
-    photonView.RPC("DamageFlash", RpcTarget.Others);
-    // update the health bar UI
-    // die if no health left
-    if(curHp <= 0)
-        photonView.RPC("Die", RpcTarget.All);
-    GameUI.instance.UpdateHealthBar();
+        if (dead)
+        {
+            return;
+        }
+        if (shield.activeSelf)
+        {
+            curShieldTime -= damage;
+        }
+        else
+        {
+            curHp -= damage;
+            curAttackerId = attackerId;
+            // flash the player red
+            photonView.RPC("DamageFlash", RpcTarget.Others);
+            // update the health bar UI
+            // die if no health left
+            if (curHp <= 0)
+                photonView.RPC("Die", RpcTarget.All);
+        }
+        GameUI.instance.UpdateHealthBar();
     }
 
 
@@ -150,6 +165,24 @@ public class PlayerController : MonoBehaviourPun
         GameUI.instance.UpdateHealthBar();
         // update the health bar UI
     }
-
+    [PunRPC]
+    public void GiveShield()
+    {
+        shield.SetActive(true);
+        curShieldTime = maxShieldTime;
+        StartCoroutine(ShieldTimer());
+        IEnumerator ShieldTimer()
+        {
+            GameUI.instance.UpdateHealthBar();
+            while (curShieldTime > 0)
+            {
+                yield return new WaitForSeconds(1);
+                curShieldTime -= 1;
+                GameUI.instance.UpdateHealthBar();
+            }
+            shield.SetActive(false);
+            GameUI.instance.UpdateHealthBar();
+        }
+    }
 
 }

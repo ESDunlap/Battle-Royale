@@ -2,10 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Photon.Pun;
+using System.Data;
 
 public class GameUI : MonoBehaviourPun
 {
     public Slider healthBar;
+    public Slider shieldBar;
+    public Image healthBarColor;
     public TextMeshProUGUI playerInfoText;
     public TextMeshProUGUI ammoText;
     public TextMeshProUGUI winText;
@@ -24,12 +27,15 @@ public class GameUI : MonoBehaviourPun
         player = localPlayer;
         healthBar.maxValue = player.maxHp;
         healthBar.value = player.curHp;
+        shieldBar.maxValue = player.maxShieldTime;
+        shieldBar.value = player.curShieldTime;
         UpdatePlayerInfoText();
         UpdateAmmoText();
     }
 
     public void UpdateHealthBar()
     {
+        shieldBar.value = player.curShieldTime;
         healthBar.value = player.curHp;
     }
 

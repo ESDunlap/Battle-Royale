@@ -27,7 +27,10 @@ public class Bullet : MonoBehaviour
             if (player.id != attackerId)
                 player.photonView.RPC("TakeDamage", player.photonPlayer, attackerId, damage);
         }
-        Destroy(gameObject);
+        if (!(other.CompareTag("Bullet")))
+        {
+            Destroy(gameObject);
+        }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
