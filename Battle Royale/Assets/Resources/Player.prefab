@@ -218,9 +218,9 @@ MonoBehaviour:
   shotgunBulletSpeed: 15
   shotgunShootRate: 2
   shotgunBulletSpread: 50
-  sniperDamage: 30
-  sniperMaxAmmo: 10
-  sniperBulletSpeed: 200
+  sniperDamage: 80
+  sniperMaxAmmo: 5
+  sniperBulletSpeed: 100
   sniperShootRate: 4
   sniperBulletSpawnPos: {fileID: 8516890953048646617}
   bulletPrefab: {fileID: 5153120219975384548, guid: 760970a1fb3c53d48bd046c00c775b12, type: 3}
@@ -483,10 +483,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gun
       objectReference: {fileID: 0}
-    - target: {fileID: 2425892148763273060, guid: b915a4a4da5c270418acd63c3c82e92e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -513,22 +509,6 @@ PrefabInstance:
     - target: {fileID: 586582852531183489, guid: 2cb179dd8ebc1d94595ca8235a8d08cd, type: 3}
       propertyPath: m_Name
       value: Shield
-      objectReference: {fileID: 0}
-    - target: {fileID: 586582852531183489, guid: 2cb179dd8ebc1d94595ca8235a8d08cd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085365931030416332, guid: 2cb179dd8ebc1d94595ca8235a8d08cd, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4717399
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085365931030416332, guid: 2cb179dd8ebc1d94595ca8235a8d08cd, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4717399
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085365931030416332, guid: 2cb179dd8ebc1d94595ca8235a8d08cd, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4717399
       objectReference: {fileID: 0}
     - target: {fileID: 8085365931030416332, guid: 2cb179dd8ebc1d94595ca8235a8d08cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,10 +683,6 @@ PrefabInstance:
     - target: {fileID: 7119267088241888563, guid: 4793183dfa2ed7b4fbaa2f6330336c76, type: 3}
       propertyPath: m_Name
       value: Sniper
-      objectReference: {fileID: 0}
-    - target: {fileID: 7119267088241888563, guid: 4793183dfa2ed7b4fbaa2f6330336c76, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
