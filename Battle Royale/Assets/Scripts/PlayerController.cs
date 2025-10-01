@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviourPun
         // is this not our local player?
         if (!photonView.IsMine)
         {
-            GetComponentInChildren<Camera>().gameObject.SetActive(false);
+            //GetComponentInChildren<Camera>().gameObject.SetActive(false);      Testing if removing this breaks the game
             rig.isKinematic = true;
         }
         else
