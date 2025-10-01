@@ -115,6 +115,7 @@ public class PlayerWeapon : MonoBehaviourPun
         maxAmmo= basicMaxAmmo;
         bulletSpeed= basicBulletSpeed;
         shootRate= basicShootRate;
+        GameUI.instance.UpdateAmmoText();
     }
 
     [PunRPC]
@@ -128,6 +129,7 @@ public class PlayerWeapon : MonoBehaviourPun
         maxAmmo = shotgunMaxAmmo;
         bulletSpeed = shotgunBulletSpeed;
         shootRate = shotgunShootRate;
+        GameUI.instance.UpdateAmmoText();
     }
 
     [PunRPC]
@@ -141,5 +143,6 @@ public class PlayerWeapon : MonoBehaviourPun
         maxAmmo = sniperMaxAmmo;
         bulletSpeed = sniperBulletSpeed;
         shootRate = sniperShootRate;
+        GameUI.instance.UpdateAmmoText();
     }
 }

@@ -165,6 +165,8 @@ public class PlayerController : MonoBehaviourPun
         GameUI.instance.UpdateHealthBar();
         // update the health bar UI
     }
+
+
     [PunRPC]
     public void GiveShield()
     {
