@@ -210,16 +210,16 @@ MonoBehaviour:
   curAmmo: 0
   maxAmmo: 0
   basicDamage: 10
-  basicMaxAmmo: 10
+  basicMaxAmmo: 100
   basicBulletSpeed: 30
   basicShootRate: 1
   shotgunDamage: 10
-  shotgunMaxAmmo: 10
+  shotgunMaxAmmo: 20
   shotgunBulletSpeed: 15
   shotgunShootRate: 2
   shotgunBulletSpread: 50
   sniperDamage: 80
-  sniperMaxAmmo: 5
+  sniperMaxAmmo: 10
   sniperBulletSpeed: 100
   sniperShootRate: 4
   sniperBulletSpawnPos: {fileID: 8516890953048646617}

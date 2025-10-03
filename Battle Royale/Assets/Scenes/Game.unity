@@ -2367,9 +2367,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sniper (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7119267088241888563, guid: 4793183dfa2ed7b4fbaa2f6330336c76, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9178791054703835611, guid: 4793183dfa2ed7b4fbaa2f6330336c76, type: 3}
       propertyPath: sceneViewId
-      value: 17
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3595,6 +3599,10 @@ PrefabInstance:
     - target: {fileID: 2425892148763273060, guid: b915a4a4da5c270418acd63c3c82e92e, type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425892148763273060, guid: b915a4a4da5c270418acd63c3c82e92e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5893943539786253303, guid: b915a4a4da5c270418acd63c3c82e92e, type: 3}
       propertyPath: sceneViewId
