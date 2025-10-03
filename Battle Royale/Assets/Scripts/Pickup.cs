@@ -30,13 +30,13 @@ public class Pickup : MonoBehaviourPun
             else if (type == PickupType.Ammo)
                 player.photonView.RPC("GiveAmmo", player.photonPlayer, value);
             else if (type == PickupType.Basic)
-                player.photonView.RPC("GiveBasic", player.photonPlayer, RpcTarget.All);
+                player.photonView.RPC("GiveBasic", player.photonPlayer);
             else if (type == PickupType.Sniper)
-                player.photonView.RPC("GiveSniper", player.photonPlayer, RpcTarget.All);
+                player.photonView.RPC("GiveSniper", player.photonPlayer);
             else if (type == PickupType.Shotgun)
-                player.photonView.RPC("GiveShotgun", player.photonPlayer, RpcTarget.All);
+                player.photonView.RPC("GiveShotgun", player.photonPlayer);
             else if (type == PickupType.Shield)
-                player.photonView.RPC("GiveShield", player.photonPlayer, RpcTarget.All);
+                player.photonView.RPC("GiveShield", player.photonPlayer);
             // destroy the object
             //PhotonNetwork.Destroy(gameObject);
             // BUG: pickups don't get removed from game and throw error:
